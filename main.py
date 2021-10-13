@@ -1,6 +1,7 @@
 # Project: Text to Morse Code
 # Author: Brody Moore
 
+# dictionary to hold translations
 MORSE_CODE_DICT = {
     'A': '.-', 'B': '-...', ' ': ' ',
     'C': '-.-.', 'D': '-..', 'E': '.',
@@ -46,10 +47,9 @@ while True:
         text = input('Enter your english text: ')
         translate_to_morse(text)
         break
-    elif direction == 'Morse -> English':  # TODO change back
+    elif direction == 'Morse -> English':
         code = input('Enter your morse code: ')
         translate_to_english(code)
         break
     else:
         print('Please enter a valid response(English -> Morse or Morse -> English): ')
-
