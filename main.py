@@ -22,12 +22,23 @@ MORSE_CODE_DICT = {
 
 def translate_to_morse(english):
     letters = list(english)
-    result = [MORSE_CODE_DICT[letter.upper()] + ' ' for letter in letters]
+    result = [MORSE_CODE_DICT[letter.upper()] for letter in letters]
     print(*result)
 
 
 def translate_to_english(morse):
-    pass
+    inv_dict = {val: key for key, val in MORSE_CODE_DICT.items()}
+    letters = []
+    i = 0
+    for letter in morse:
+        if letter != ' ':
+            i = 0
+            letters.append(inv_dict[letter])
+        else:
+            i += 1
+            if i == 3:
+                letters.append(' ')
+    print(*letters)
 
 
 print('Welcome to Morse-ify')
