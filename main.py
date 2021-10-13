@@ -27,18 +27,16 @@ def translate_to_morse(english):
 
 
 def translate_to_english(morse):
+    result = ''
     inv_dict = {val: key for key, val in MORSE_CODE_DICT.items()}
-    letters = []
-    i = 0
-    for letter in morse:
-        if letter != ' ':
-            i = 0
-            letters.append(inv_dict[letter])
-        else:
-            i += 1
-            if i == 3:
-                letters.append(' ')
-    print(*letters)
+    words = morse.split('   ')
+    for word in words:
+        letters = word.split(' ')
+        for letter in letters:
+            result += inv_dict[letter]
+        result += ' '
+
+    print(result)
 
 
 print('Welcome to Morse-ify')
@@ -48,7 +46,7 @@ while True:
         text = input('Enter your english text: ')
         translate_to_morse(text)
         break
-    elif direction == 'Morse -> English':
+    elif direction == 'Morse -> English':  # TODO change back
         code = input('Enter your morse code: ')
         translate_to_english(code)
         break
